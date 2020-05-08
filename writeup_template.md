@@ -8,11 +8,70 @@
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+<!-- 
 
+output_images/undist_2.jpg
+output_images/undist_test_1.jpg
+output_images/undist_test_2.jpg
+output_images/rbg_test_1.jpg
+output_images/rbg_test_2.jpg
+output_images/rbg_test_3.jpg
+output_images/hls_test_1.jpg
+output_images/hls_test_2.jpg
+output_images/hls_test_3.jpg
+output_images/S_channel_1.jpg
+output_images/S_channel_2.jpg
+output_images/w_y_hls_1.jpg
+output_images/w_y_hls_2.jpg
 
-# **Advanced Lane Finding Project**
----
+output_images/sobel_origin.jpg
+output_images/sobel_abs_x.jpg
+output_images/sobel_abs_y.jpg
+output_images/sobel_mag.jpg
+output_images/sobel_dir.jpg
+output_images/sobel_combin.jpg
+
+output_images/color_grad_combin.jpg
+output_images/sobel_combin.jpg
+output_images/aoi.jpg
+output_images/pers_trans_org.jpg
+output_images/pers_trans_curv.jpg
+output_images/pers_trans_str_line.jpg
+
+output_images/all_thresh_org.jpg
+output_images/all_thresh_binary.jpg
+
+output_images/all_thresh_org.jpg
+output_images/all_thresh_binary_pers_trans.jpg
+
+output_images/histogram_1.jpg
+output_images/histogram_2.jpg
+
+output_images/detect_lane_pix_and_fit_curv
+output_images/detect_lane_pix_and_fit_straight
+
+output_images/det_curv_lane_org.jpg
+output_images/det_curv_lane_draw_laneline.jpg
+
+./output_images/project_video_frame_2.0.jpg
+./output_images/project_video_frame_14.0.jpg
+./output_images/project_video_frame_21.0.jpg
+./output_images/project_video_frame_24.0.jpg
+./output_images/project_video_frame_29.0.jpg
+./output_images/project_video_frame_39.0.jpg
+./output_images/project_video_frame_41.0.jpg
+./output_images/project_video_frame_45.0.jpg
+
+./output_images/project_video_frame_out_2.0.jpg
+./output_images/project_video_frame_out_14.0.jpg
+./output_images/project_video_frame_out_21.0.jpg
+./output_images/project_video_frame_out_24.0.jpg
+./output_images/project_video_frame_out_29.0.jpg
+./output_images/project_video_frame_out_39.0.jpg
+./output_images/project_video_frame_out_41.0.jpg
+./output_images/project_video_frame_out_45.0.jpg
+ -->
+
 <!-- <table>
     <tr>
         <td>
@@ -24,7 +83,11 @@
     </tr>
 </table> -->
 
-<img src= ![alt text][image1] width="225"/> <img src= ![alt text][image2] width="125"/> 
+<!-- <img src="./examples/undistort_output.png" width="125"/> <img src="./test_images/test1.jpg" width="125"/>  -->
+
+ 
+# **Advanced Lane Finding Project**
+---
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
 
@@ -69,7 +132,10 @@ I started by preparing "object points", which will be the (x, y, z) coordinates 
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![alt text][image1]
+
+<img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/calibr_2.jpg" width="300"/> 
+
+<!-- ![alt text][image1] -->
 
 ### Pipeline (single images)
 
