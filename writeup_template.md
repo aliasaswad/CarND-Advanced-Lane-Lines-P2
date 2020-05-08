@@ -13,9 +13,7 @@
 
 
 
-output_images/hls_test_1.jpg
-output_images/hls_test_2.jpg
-output_images/hls_test_3.jpg
+
 output_images/S_channel_1.jpg
 output_images/S_channel_2.jpg
 output_images/w_y_hls_1.jpg
@@ -185,6 +183,24 @@ Here's an example of my output for this step.
 |<img src="./output_images/rbg_test_1.jpg" width="250"/> <img src="./output_images/rbg_test_2.jpg" width="250"/> <img src="./output_images/rbg_test_3.jpg" width="250"/>
 |:--:| 
 |*R-Channel____________________G-Channel______________________B-Channel*|
+
+Then I repeated the smae for HLS channels
+
+```python
+hls = cv2.cvtColor(undistorted_test_image, cv2.COLOR_RGB2HLS)
+H_channel = hls[:,:,0]
+L_channel = hls[:,:,1]
+S_channel = hls[:,:,2]
+```
+Here's an example of my output for this step.
+
+|<img src="./output_images/hls_test_1.jpg" width="250"/> <img src="./output_images/hls_test_2.jpg" width="250"/> <img src="./output_images/rbg_test_3.jpg" width="250"/>
+|:--:| 
+|*H-Channel____________________L-Channel______________________S-Channel*|
+
+
+
+
 
 
 
