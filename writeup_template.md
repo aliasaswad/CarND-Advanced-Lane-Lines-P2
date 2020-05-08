@@ -135,11 +135,11 @@ I started by preparing "object points", which will be the (x, y, z) coordinates 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
 
-<figure>
-
+<p>
     <img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/calibr_2.jpg" width="300"/> 
-    <figcaption>Caption text</figcaption>
-</figure>
+    <em>image_caption</em>
+</p>
+
 <!-- ![alt text][image1] -->
 
 ### Pipeline (single images)
@@ -152,7 +152,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 <!-- ![alt text][image2] -->
 
-So, when we apply the distortion correction on out test images the result will be as belwo:
+So, when we apply the distortion correction on out test images the result will be as below:
 
 <img src="./output_images/undist_test_2.jpg" width="450"/> <img src="./output_images/undist_test_1.jpg" width="450"/> 
 
