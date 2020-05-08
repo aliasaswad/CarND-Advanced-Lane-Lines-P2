@@ -434,12 +434,6 @@ right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
 |:--:| 
 |*Detect lane lane pixels for curve______________________________Detect lane lane pixels for straight line*|
 
-
-
-
-
-
-
 <!-- This resulted in the following source and destination points:
 
 | Source        | Destination   | 
@@ -452,13 +446,15 @@ right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
  -->
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 6: Warp the detected lane boundaries back onto the original image.
+
+|<img src="./output_images/det_curv_lane_org.jpg" width="400"/> <img src="./output_images/det_curv_lane_draw_laneline.jpg" width="400"/> 
+|:--:| 
+|*Undistorted image_____________________________Image with lane line*|
 
 
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
