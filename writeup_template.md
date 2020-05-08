@@ -151,7 +151,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 So, when we apply the distortion correction on out test images the result will be as belwo:
 
-<img src="./output_images/undist_test_1.jpg" width="300"/> <img src="./output_images/undist_test_2.jpg" width="300"/> 
+<img src="./output_images/undist_test_2.jpg" width="500"/> <img src="./output_images/undist_test_1.jpg" width="500"/> 
 
 
 
