@@ -175,7 +175,7 @@ RGB is red-green-blue color space. You can think of this as a 3D space, in this 
 
 Here's an example of my output for this step.
 
-|<img src="./output_images/rbg_test_1.jpg" width="300"/> <img src="./output_images/rbg_test_2.jpg" width="300"/> <img src="./output_images/rbg_test_3.jpg" width="300"/>
+|<img src="./output_images/rbg_test_1.jpg" width="250"/> <img src="./output_images/rbg_test_2.jpg" width="250"/> <img src="./output_images/rbg_test_3.jpg" width="250"/>
 |:--:| 
 |*R-Channel____________________G-Channel______________________B-Channel*|
 
