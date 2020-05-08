@@ -139,7 +139,16 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 |:--:| 
 | *Original Image ----------------------------------- Undistoted Image* |
 
-<!-- ![alt-text-1](./output_images/calibr_1.jpg "title-1") ![alt-text-2](./output_images/calibr_2.jpg "title-2") -->
+![alt-text-1](./output_images/calibr_1.jpg "title-1") ![alt-text-2](./output_images/calibr_2.jpg "title-2")
+
+.center[
+![My image](./output_images/calibr_1.jpg)
+
+.caption[
+**Fig. 1:** Image caption
+]
+
+]
 
 <!-- ![alt text][image1] -->
 
