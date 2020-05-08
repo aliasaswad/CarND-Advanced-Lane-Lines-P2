@@ -226,6 +226,29 @@ def get_y_w_hls_images(img):
 |*Undistorted Image  _________________________ W_Y Color Thresholded Image*|
 
 
+#### Applying Sobel Thresholding
+----
+**Calculate the absolute threshold value**
+
+Calculate the derivative in the xx direction (the 1, 0 at the end denotes xx direction):
+```python
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0)
+```
+|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_abs_x.jpg" width="400"/> 
+|:--:| 
+|*Original image  _________________________Abs_Sobel_X*|
+
+
+
+
+Calculate the derivative in the yy direction (the 0, 1 at the end denotes yy direction):
+
+```python
+sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
+```
+|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_abs_y.jpg" width="400"/> 
+|:--:| 
+|*Original image  _________________________ Abs_Sobel_Y*|
 
 
 <!-- ![alt text][image3] -->
