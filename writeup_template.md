@@ -430,7 +430,7 @@ ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0])
 left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
 right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
 ```
-|<img src="./output_images/detect_lane_pix_and_fit_curv" width="400"/> <img src="./output_images/detect_lane_pix_and_fit_straight" width="400"/> 
+|<img src="./output_images/detect_lane_pix_and_fit_curv.jpg" width="400"/> <img src="./output_images/detect_lane_pix_and_fit_straight.jpg" width="400"/> 
 |:--:| 
 |*Detect lane lane pixels for curve______________________________Detect lane lane pixels for straight line*|
 
