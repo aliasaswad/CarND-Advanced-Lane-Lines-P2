@@ -16,10 +16,10 @@
 <table>
     <tr>
         <td>
-            <img src='./examples/undistort_output.png' alt="Drawing" style="width: 50px;">
+            <img src='./examples/undistort_output.png' alt="Drawing" style="width: 10px;">
         </td>
         <td>
-            <img src='./test_images/test1.jpg' alt="Drawing" style="width: 50px;">
+            <img src='./test_images/test1.jpg' alt="Drawing" style="width:10px;">
         </td>
     </tr>
 </table>
