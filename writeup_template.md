@@ -295,8 +295,7 @@ def combin_sobel(abs_sobel_x, abs_sobel_y, mag_sobel, dir_sobel):
     combin[(abs_sobel_x == 1) | ((abs_sobel_y == 1) & (mag_sobel == 1) & (dir_sobel == 1))] = 1
     return combin
 ```
-|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_combin.jpg
-" width="400"/> 
+|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_combin.jpg" width="400"/> 
 |:--:| 
 |*Original image_________________________ Combined Sobel*|
 
