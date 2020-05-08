@@ -8,12 +8,14 @@
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
+[image1]: ./examples/undistort_output.png "Undistorted"
 
 
-### **Advanced Lane Finding Project**
+# **Advanced Lane Finding Project**
 ---
 
-
+from IPython.display import HTML, display
+display(HTML("<table><tr><td><img src='./examples/undistort_output.png'></td><td><img src='./test_images/test1.jpg'></td></tr></table>"))
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
 
@@ -31,7 +33,7 @@ The goals / steps of this project is to build a Lane Finding Pipeline as the fol
 
 ### Camera Calibration
 
-#### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+#### 1. The below description is how you computed the camera matrix and distortion coefficients with an example of a distortion corrected calibration image.
 
 ```python
 # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
