@@ -226,7 +226,7 @@ def get_y_w_hls_images(img):
 |*Undistorted Image  _________________________ W_Y Color Thresholded Image*|
 
 
-#### Applying Sobel Thresholding
+#### 3. Applying Sobel Thresholding
 ----
 **Calculate the absolute threshold value for x and y**
 
@@ -312,6 +312,36 @@ color_binary = color_binary.astype(np.uint8)
 |<img src="./output_images/sobel_origin.jpg" width="280"/> <img src="./output_images/color_grad_combin.jpg" width="280"/> <img src="./output_images/sobel_combin.jpg" width="280"/> 
 |:--:|
 |*Original image____________________Stacked thresholds___________________Combined S-channel and gradient thresh.*|
+
+
+#### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
+
+Draw polyline and Fit a polynomial
+```pyhton
+(width, length) = (test_image.shape[0] - 1, test_image.shape[1] - 1) 
+aoi = np.array([[210,width],[595,450],[690,450], [1110, width]], np.int32)
+cv2.polylines(test_image,[aoi],True,(255,0,0), 10)
+```
+|<img src="./output_images/aoi.jpg" width="500"/>  
+|:--:|
+|*AOI*|
+
+After applying calibration, and thresholding, we should then appy a perspective transform to a road image as below:
+
+```pyhton
+# Warp an image using the perspective transform, M
+def get_perspective_transform(img, src, dst):   
+    M = cv2.getPerspectiveTransform(src, dst)
+    img_size = (img.shape[1], img.shape[0])
+    warped = cv2.warpPerspective(img, M, img_size, flags=cv2.INTER_LINEAR)
+    return warped
+```
+
+And here's the example:
+
+|<img src="./output_images/pers_trans_org.jpg" width="280"/> <img src="./output_images/pers_trans_curv.jpg" width="280"/> <img src="./output_images/pers_trans_str_line.jpg" width="280"/> 
+|:--:|
+|*Original image____________________Pres. trans. for curve___________________Pres. trans. for straight line*|
 
 
 
