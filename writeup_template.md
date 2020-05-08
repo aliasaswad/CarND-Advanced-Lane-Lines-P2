@@ -368,7 +368,7 @@ After applying calibration, thresholding, and a perspective transform to a road 
 
 Plotting a histogram of where the binary activations occur across the image is one potential solution for this.
 
-```pyhton
+```python
 def hist(binary_warped):
     # Lane lines are likely to be mostly vertical nearest to the car
     # Sum across image pixels vertically
@@ -389,7 +389,7 @@ As shown in the previous animation, we can use the two highest peaks from our hi
 ***Set up windows and window hyperparameters***
 Our next step is to set a few hyperparameters related to our sliding windows, and set them up to iterate across the binary activations in the image. We have some base hyperparameters below
 
-```pyhton
+```python
 # HYPERPARAMETERS
 # Choose the number of sliding windows
 nwindows = 9
@@ -415,7 +415,7 @@ Now that we've set up what the windows look like and have a starting point, we'l
 
 Then we have to fit a polynomial. We have found all our pixels belonging to each line through the sliding window method, it's time to fit a polynomial to the line. First, we have a couple small steps to ready our pixels.
 
-```pyhton
+```python
 # Concatenate the arrays of indices (previously was a list of lists of pixels)
 left_lane_inds = np.concatenate(left_lane_inds)
 right_lane_inds = np.concatenate(right_lane_inds)
@@ -451,7 +451,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 The function below I used to plot on the image such that the lane area is identified clearly
 
-```pyhton
+```python
 def draw_poly(img, left_fit, right_fit):
     
     # Calculate points.
@@ -478,7 +478,7 @@ def draw_poly(img, left_fit, right_fit):
 ---
 We've calculated the radius of curvature based on pixel values, so the radius we are reporting is in pixel space, which is not the same as real world space. So we actually need to repeat this calculation after converting our x and y values to real world space.
 
-```pyhton
+```python
 def visual_lane_cur_pos(img, fontScale=2):
     # get the left and right fit to calculate the curvature 
     left_fit, right_fit, left_fit_m, right_fit_m = get_fit_and_lanes(img)
@@ -503,7 +503,7 @@ def visual_lane_cur_pos(img, fontScale=2):
 
 <img src="./output_images/project_video_frame_2.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_2.0.jpg" width="400"/>
 
-<img src="./output_images/project_video_frame_14.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_2.0.jpg" width="400"/>
+<img src="./output_images/project_video_frame_14.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_14.0.jpg" width="400"/>
 
 <img src="./output_images/project_video_frame_21.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_21.0.jpg" width="400"/>
 
