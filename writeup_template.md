@@ -358,6 +358,12 @@ def combine_allthresh_and_transform(img):
 
 #### 5. Detect Lane pixels and Determine the curvature
 ----
+Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+
+![alt text][image5]
+
+The details about hpw I did this as below.
+
 After applying calibration, thresholding, and a perspective transform to a road image, we should have a binary image where the lane lines stand out clearly. However, we still need to decide explicitly which pixels are part of the lines and which belong to the left line and which belong to the right line.
 
 Plotting a histogram of where the binary activations occur across the image is one potential solution for this.
@@ -376,40 +382,65 @@ histogram = hist(binary_warped)
 
 |<img src="./output_images/histogram_1.jpg" width="400"/> <img src="./output_images/histogram_2.jpg" width="400"/> 
 |:--:| 
-|*Perspective Transform_________________________ Histogram*|
+|*Perspective Transform______________________________ Histogram*|
 
+#### Implement Sliding Windows and Fit a Polynomial
+As shown in the previous animation, we can use the two highest peaks from our histogram as a starting point for determining where the lane lines are, and then use sliding windows moving upward in the image (further along the road) to determine where the lane lines go.
+***Set up windows and window hyperparameters***
+Our next step is to set a few hyperparameters related to our sliding windows, and set them up to iterate across the binary activations in the image. We have some base hyperparameters below
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- ![alt text][image3] -->
-
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
-
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
-
-```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+```pyhton
+# HYPERPARAMETERS
+# Choose the number of sliding windows
+nwindows = 9
+# Set the width of the windows +/- margin
+margin = 100
+# Set minimum number of pixels found to recenter window
+minpix = 50
+# Set height of windows - based on nwindows above and image shape
+window_height = np.int(binary_warped.shape[0]//nwindows)
+# Identify the x and y positions of all nonzero (i.e. activated) pixels in the image
+nonzero = binary_warped.nonzero()
+nonzeroy = np.array(nonzero[0])
+nonzerox = np.array(nonzero[1])
+# Current positions to be updated later for each window in nwindows
+leftx_current = leftx_base
+rightx_current = rightx_base
+# Create empty lists to receive left and right lane pixel indices
+left_lane_inds = []
+right_lane_inds = []
 ```
+***Iterate through nwindows to track curvature***
+Now that we've set up what the windows look like and have a starting point, we'll want to loop for nwindows, with the given window sliding left or right if it finds the mean position of activated pixels within the window to have shifted.
 
-This resulted in the following source and destination points:
+Then we have to fit a polynomial. We have found all our pixels belonging to each line through the sliding window method, it's time to fit a polynomial to the line. First, we have a couple small steps to ready our pixels.
+
+```pyhton
+# Concatenate the arrays of indices (previously was a list of lists of pixels)
+left_lane_inds = np.concatenate(left_lane_inds)
+right_lane_inds = np.concatenate(right_lane_inds)
+# Extract left and right line pixel positions
+leftx = nonzerox[left_lane_inds]
+lefty = nonzeroy[left_lane_inds] 
+rightx = nonzerox[right_lane_inds]
+righty = nonzeroy[right_lane_inds]
+# Assum we have `left_fit` and `right_fit` from `np.polyfit` before
+# Generate x and y values for plotting
+ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0])
+left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
+right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
+```
+|<img src="./output_images/detect_lane_pix_and_fit_curv" width="400"/> <img src="./output_images/detect_lane_pix_and_fit_straight" width="400"/> 
+|:--:| 
+|*Detect lane lane pixels for curve______________________________Detect lane lane pixels for straight line*|
+
+
+
+
+
+
+
+<!-- This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
@@ -419,14 +450,11 @@ This resulted in the following source and destination points:
 | 695, 460      | 960, 0        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
-![alt text][image4]
+ -->
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
-![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
