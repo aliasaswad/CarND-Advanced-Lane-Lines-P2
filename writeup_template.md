@@ -135,15 +135,11 @@ I started by preparing "object points", which will be the (x, y, z) coordinates 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
 
-<p>
-   <img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/calibr_2.jpg" width="300"/> 
-    
-    <br>
-    <em>Fig. 2: The minimum dominating set of a graph</em>
-</p>
+<figure>
 
-
-
+    <img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/calibr_2.jpg" width="300"/> 
+    <figcaption>Caption text</figcaption>
+</figure>
 <!-- ![alt text][image1] -->
 
 ### Pipeline (single images)
