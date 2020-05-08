@@ -11,8 +11,7 @@
 <!-- 
 
 
-output_images/undist_test_1.jpg
-output_images/undist_test_2.jpg
+
 output_images/rbg_test_1.jpg
 output_images/rbg_test_2.jpg
 output_images/rbg_test_3.jpg
@@ -149,6 +148,13 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 <img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/undist_2.jpg" width="300"/> 
 
 <!-- ![alt text][image2] -->
+
+So, when we apply the distortion correction on out test images the result will be as belwo:
+
+<img src="./output_images/undist_test_1.jpg" width="300"/> <img src="./output_images/undist_test_2.jpg" width="300"/> 
+
+
+
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
