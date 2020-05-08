@@ -12,9 +12,7 @@
 
 
 
-output_images/rbg_test_1.jpg
-output_images/rbg_test_2.jpg
-output_images/rbg_test_3.jpg
+
 output_images/hls_test_1.jpg
 output_images/hls_test_2.jpg
 output_images/hls_test_3.jpg
@@ -167,11 +165,24 @@ So, when we apply the distortion correction on out test images the result will b
 
 
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 2. Color transforms, gradients or other methods to create a thresholded binary image. 
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  
+A color space is a specific organization of colors; color spaces provide a way to categorize colors and represent them in digital images.
 
-![alt text][image3]
+RGB is red-green-blue color space. You can think of this as a 3D space, in this case a cube, where any color can be represented by a 3D coordinate of R, G, and B values. For example, white has the coordinate (255, 255, 255), which has the maximum value for red, green, and blue.
+
+
+Here's an example of my output for this step.
+
+|<img src="./output_images/rbg_test_1.jpg" width="200"/> <img src="./output_images/rbg_test_2.jpg" width="200"/> <img src="./output_images/rbg_test_3.jpg" width="200"/>
+|:--:| 
+|*R-Channel____________________G-Channel______________________B-Channel*|
+
+
+
+
+<!-- ![alt text][image3] -->
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
