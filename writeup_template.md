@@ -137,7 +137,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 | <img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/calibr_2.jpg" width="300"/> 
 |:--:| 
-| *Space* |
+| *Original Image                             Undistoted Image* |
 
 <!-- ![alt text][image1] -->
 
