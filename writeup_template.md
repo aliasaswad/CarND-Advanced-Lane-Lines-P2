@@ -13,7 +13,7 @@
 
 # **Advanced Lane Finding Project**
 ---
-<table>
+<!-- <table>
     <tr>
         <td>
             <img src='./examples/undistort_output.png' alt="Drawing" style="width: 10px;">
@@ -22,7 +22,9 @@
             <img src='./test_images/test1.jpg' alt="Drawing" style="width:10px;">
         </td>
     </tr>
-</table>
+</table> -->
+
+<img src="./examples/undistort_output.png" width="125"/> <img src="./test_images/test1.jpg" width="125"/> 
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
 
