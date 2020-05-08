@@ -1,4 +1,5 @@
 ## Advanced Lane Line Finding
+---
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 ![Lanes Image](./examples/example_output.jpg)
 
@@ -30,7 +31,7 @@ The `challenge_video.mp4` video is an extra (and optional) challenge to test you
 ## Conclusion
 ---
 
-To conclude, we should metion to the the importance of the computer vision process enables since it is the eyes of self-driving cars to make sense of their surroundings.
+To conclude, we should metion to the the importance of the computer vision process since it is consider the eyes of self-driving cars to make sense of their surroundings.
 
 
 ## How to write a README
