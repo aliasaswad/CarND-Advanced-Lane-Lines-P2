@@ -88,7 +88,7 @@ output_images/det_curv_lane_draw_laneline.jpg
  
 # **Advanced Lane Finding Project**
 
-<img src="./output_images/project_video_frame_45.0.jpg" width="500"/>
+<img src="./output_images/project_video_frame_out_45.0.jpg" width="600"/>
 ---
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
