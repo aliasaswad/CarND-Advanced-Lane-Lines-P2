@@ -145,6 +145,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 ### Pipeline (single images)
 
 #### 1. Distortion-corrected image.
+----
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 
@@ -161,9 +162,8 @@ So, when we apply the distortion correction on out test images the result will b
 |*Original image  _________________________    Undistoted image*|
 
 
-
-
 #### 2. Color transforms, gradients or other methods to create a thresholded binary image. 
+----
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `P2.py`).  
 A color space is a specific organization of colors; color spaces provide a way to categorize colors and represent them in digital images.
@@ -315,6 +315,7 @@ color_binary = color_binary.astype(np.uint8)
 
 
 #### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
+----
 
 Draw polyline and Fit a polynomial
 ```pyhton
@@ -355,11 +356,35 @@ def combine_allthresh_and_transform(img):
 |:--:|
 |*Original image____________________All Thresh___________________All Thresh and Pres. Trans*|
 
+#### 5. Detect Lane pixels and Determine the curvature
+----
+After applying calibration, thresholding, and a perspective transform to a road image, we should have a binary image where the lane lines stand out clearly. However, we still need to decide explicitly which pixels are part of the lines and which belong to the left line and which belong to the right line.
+
+Plotting a histogram of where the binary activations occur across the image is one potential solution for this.
+
+```pyhton
+def hist(binary_warped):
+    # Lane lines are likely to be mostly vertical nearest to the car
+    # Sum across image pixels vertically
+    # The highest areas of vertical lines should be larger values
+    histogram = np.sum(binary_warped[binary_warped.shape[0]//2:,:], axis=0)
+    histogram = np.dstack((binary_warped, binary_warped, binary_warped))*255
+    return histogram
+# Create histogram of image binary activations
+histogram = hist(binary_warped)
+```
+
+|<img src="./output_images/histogram_1.jpg" width="400"/> <img src="./output_images/histogram_2.jpg" width="400"/> 
+|:--:| 
+|*Perspective Transform_________________________ Histogram*|
 
 
 
 
-output_images/all_thresh_org.jpg
+
+
+
+
 
 
 
