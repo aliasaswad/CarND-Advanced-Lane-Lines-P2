@@ -523,14 +523,17 @@ Original image______________________________________________Visual lane current 
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1. After applying all the above pipeline processes on a project video, we performed reasonably well on the entire project video (wobbly lines are ok ).
 
-Here's a [link to my video result](./project_video.mp4)
-
+Here's the link to my video resulton [github](./output_video/project_video.mp4). 
+ 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+To conclude with my results I would like to mention to few things that could help to improve the solution:
+* Using other channel module for the image might help lane lines detection.
+* We could apply another type of gradients to make the process of lane line detection more better.
+* For the slide window we could use different approach that will help more in draw lane lines.
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+In addition, to achieve the two challenges, we need to improve the pipeline!
