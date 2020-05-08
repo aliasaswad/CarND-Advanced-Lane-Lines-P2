@@ -221,7 +221,7 @@ def get_y_w_hls_images(img):
     hls_w_y[(w_hls == 1) | (y_hls == 1) ] = 1
 ```
 
-|<img src="./output_images/undist_2.jpg" width="400"/> <img src="./output_images/w_y_hls_2.jpg" width="400"/> 
+|<img src="./output_images/w_y_hls_1.jpg" width="400"/> <img src="./output_images/w_y_hls_2.jpg" width="400"/> 
 |:--:| 
 |*Undistorted Image  _________________________ W_Y Color Thresholded Image*|
 
