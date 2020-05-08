@@ -198,8 +198,7 @@ Here's an example of my output for this step.
 |:--:| 
 |*H-Channel____________________L-Channel______________________S-Channel*|
 
-
-
+From these examples, you can see that the R channel does a reasonable job of highlighting the lines and the **S channel** is probably the best bet to picks up the lines well.
 
 
 
