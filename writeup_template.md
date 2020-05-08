@@ -167,11 +167,18 @@ So, when we apply the distortion correction on out test images the result will b
 
 #### 2. Color transforms, gradients or other methods to create a thresholded binary image. 
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `P2.py`).  
 A color space is a specific organization of colors; color spaces provide a way to categorize colors and represent them in digital images.
 
 RGB is red-green-blue color space. You can think of this as a 3D space, in this case a cube, where any color can be represented by a 3D coordinate of R, G, and B values. For example, white has the coordinate (255, 255, 255), which has the maximum value for red, green, and blue.
 
+I splitted up the image to three channels as below:
+
+```python
+R = undistorted_test_image[:,:,0]
+G = undistorted_test_image[:,:,1]
+B = undistorted_test_image[:,:,2]
+```
 
 Here's an example of my output for this step.
 
