@@ -215,7 +215,6 @@ def get_y_w_hls_images(img):
     # OR yellow with white
     hls_w_y = np.zeros_like(hls_image[:,:,0])
     hls_w_y[(w_hls == 1) | (y_hls == 1) ] = 1
-
 ```
 
 |<img src="./output_images/w_y_hls_1.jpg" width="400"/> <img src="./output_images/w_y_hls_2.jpg" width="400"/> 
