@@ -500,7 +500,7 @@ def visual_lane_cur_pos(img, fontScale=2):
     else:
         message = '{:.2f} m left'.format(-diff)
 ```
-
+Original image                                     Visual lane current position
 <img src="./output_images/project_video_frame_2.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_2.0.jpg" width="400"/>
 
 <img src="./output_images/project_video_frame_14.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_14.0.jpg" width="400"/>
