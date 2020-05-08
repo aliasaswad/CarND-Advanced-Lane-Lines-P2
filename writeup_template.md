@@ -200,6 +200,27 @@ Here's an example of my output for this step.
 
 From these examples, you can see that the R channel does a reasonable job of highlighting the lines and the **S channel** is probably the best bet to picks up the lines well.
 
+To identify White and Yellow Color in the Images we need to apply the below code
+
+```pyhton
+def get_y_w_hls_images(img):
+    
+    hls_image =  cv2.cvtColor(img, cv2.COLOR_RGB2HLS)
+    # White isolated from HLS components
+    w_hls = np.zeros_like(hls_image[:,:,0])
+    w_hls[((hls_image[:,:,0] >= 0)   & (hls_image[:,:,0] <= 255)) & ((hls_image[:,:,1] >= 210) & (hls_image[:,:,1] <= 255)) & ((hls_image[:,:,2] >= 0)   & (hls_image[:,:,2] <= 255))] = 1
+    # Yellow isolated from HLS components
+    y_hls = np.zeros_like(hls_image[:,:,0])
+    y_hls[((hls_image[:,:,0] >= 20)  & (hls_image[:,:,0] <= 30)) & ((hls_image[:,:,1] >= 20) & (hls_image[:,:,1] <= 200)) & ((hls_image[:,:,2] >= 90) & (hls_image[:,:,2] <= 255))] = 1
+    # OR yellow with white
+    hls_w_y = np.zeros_like(hls_image[:,:,0])
+    hls_w_y[(w_hls == 1) | (y_hls == 1) ] = 1
+
+```
+
+|<img src="./output_images/w_y_hls_1.jpg" width="400"/> <img src="./output_images/w_y_hls_2.jpg" width="400"/> 
+|:--:| 
+|*Undistorted Image  _________________________ W_Y Color Thresholded Image*|
 
 
 
