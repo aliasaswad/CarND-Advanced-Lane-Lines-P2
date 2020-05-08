@@ -447,22 +447,78 @@ I verified that my perspective transform was working as expected by drawing the 
  -->
 
 #### 6: Warp the detected lane boundaries back onto the original image.
+----
+
+The function below I used to plot on the image such that the lane area is identified clearly
+
+```pyhton
+def draw_poly(img, left_fit, right_fit):
+    
+    # Calculate points.
+    left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
+    right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
+    # Generate a polygon to illustrate the search window area
+    # And recast the x and y points into usable format for cv2.fillPoly()
+    left_pnts = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
+    right_pnts = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
+    pts = np.hstack((left_pnts, right_pnts))
+    # Draw the lane onto the warped blank image
+    cv2.fillPoly(color_warp, np.int_([pts]), (0,255, 0))
+    # Warp the blank back to original image space using inverse perspective matrix (Minv)
+    newwarp = cv2.warpPerspective(color_warp, Minv, (img.shape[1], img.shape[0])) 
+    return cv2.addWeighted(img, 1, newwarp, 0.3, 0)
+```
 
 |<img src="./output_images/det_curv_lane_org.jpg" width="400"/> <img src="./output_images/det_curv_lane_draw_laneline.jpg" width="400"/> 
 |:--:| 
 |*Undistorted image_____________________________Image with lane line*|
 
 
-
-
-
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
-
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
-
-![alt text][image6]
-
+#### 7. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position
 ---
+We've calculated the radius of curvature based on pixel values, so the radius we are reporting is in pixel space, which is not the same as real world space. So we actually need to repeat this calculation after converting our x and y values to real world space.
+
+```pyhton
+def visual_lane_cur_pos(img, fontScale=2):
+    # get the left and right fit to calculate the curvature 
+    left_fit, right_fit, left_fit_m, right_fit_m = get_fit_and_lanes(img)
+    output = draw_poly(img, left_fit, right_fit)
+    # Calculate curvature
+    l_curvature = get_curvature(y_val, left_fit_m) 
+    r_curvature = get_curvature(y_val, right_fit_m)
+    
+    # Calculate vehicle center
+    max_x = img.shape[1]*xm_per_pix
+    max_y = img.shape[0]*ym_per_pix
+    center = max_x / 2
+    l_line = left_fit_m[0]*max_y**2 + left_fit_m[1]*max_y + left_fit_m[2]
+    r_line = right_fit_m[0]*max_y**2 + right_fit_m[1]*max_y + right_fit_m[2]
+    m_line = l_line + (r_line - l_line)/2
+    diff = m_line - center
+    if diff > 0:
+        message = '{:.2f} m right'.format(diff)
+    else:
+        message = '{:.2f} m left'.format(-diff)
+```
+
+<img src="./output_images/project_video_frame_2.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_2.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_14.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_2.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_21.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_21.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_24.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_24.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_29.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_29.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_39.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_39.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_41.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_41.0.jpg" width="400"/>
+
+<img src="./output_images/project_video_frame_45.0.jpg" width="400"/> <img src="./output_images/project_video_frame_out_45.0.jpg" width="400"/>
+
+
+
 
 ### Pipeline (video)
 
