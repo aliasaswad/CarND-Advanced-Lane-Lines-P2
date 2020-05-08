@@ -33,13 +33,32 @@ The goals / steps of this project is to build a Lane Finding Pipeline as the fol
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
 ```python
-for (i=0; i<n; i++) {
-  printf("hello %d\n", i);
-  x += 4;
-} 
+# prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
+objp = np.zeros((6*8,3), np.float32)
+objp[:,:2] = np.mgrid[0:8, 0:6].T.reshape(-1,2) #that will shape coordinate back to two colomns x and y
+
+# Arrays to store object points and image points from all the images.
+objpoints = [] # 3d points in real world space
+imgpoints = [] # 2d points in image plane.
+
+# Step through the list and search for chessboard corners
+for idx, fname in enumerate(images): #idx start from 0 to len(images)
+    img = cv2.imread(fname)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Find the chessboard corners
+    ret, corners = cv2.findChessboardCorners(gray, (8,6), None)
+
+    # If found, add object points, image points
+    if ret == True:
+        objpoints.append(objp)
+        imgpoints.append(corners)
+
+        # Draw and display the corners
+        cv2.drawChessboardCorners(img, (8,6), corners, ret)
 ```
 
-I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
+I started by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
