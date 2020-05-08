@@ -442,9 +442,10 @@ right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
 | 203, 720      | 320, 720      |
 | 1127, 720     | 960, 720      |
 | 695, 460      | 960, 0        |
+ -->
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
- -->
+
 
 #### 6: Warp the detected lane boundaries back onto the original image.
 ----
@@ -525,7 +526,9 @@ Original image______________________________________________Visual lane current 
 
 #### 1. After applying all the above pipeline processes on a project video, we performed reasonably well on the entire project video (wobbly lines are ok ).
 
-Here's the link to my video resulton [github](./output_video/project_video.mp4). 
+![Alt Text](./output_video/project_video.gif)
+
+Here's the link to my video result on [github](./output_video/project_video.mp4). 
  
 ---
 
