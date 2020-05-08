@@ -230,7 +230,9 @@ def get_y_w_hls_images(img):
 ----
 **Calculate the absolute threshold value for x and y**
 
-Calculate the derivative in the xx and yy direction (the 1, 0 at the end denotes xx direction) and (the 0, 1 at the end denotes yy direction):
+Calculate the derivative in the xx and yy direction (the 1, 0 at the end denotes xx direction) and (the 0, 1 at the end denotes yy direction).
+
+Pass in img and set the parameter orient as 'x' or 'y' to take either the xx or yy gradient. Set thresh_min, and thresh_max to specify the range to select for binary output. We can use exclusive (<, >) or inclusive (<=, >=) thresholding.
 ```python
 # Apply x or y gradient with the OpenCV Sobel() function
     # and take the absolute value
@@ -245,29 +247,47 @@ Calculate the derivative in the xx and yy direction (the 1, 0 at the end denotes
     # Here I'm using inclusive (>=, <=) thresholds, but exclusive is ok too
 binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 ```
-Here's an example of my output for this step.
+***NOTE:*** YOur output should be an array of the same size as the input image. The output array elements should be 1 where gradients were in the threshold range, and 0 everywhere else.
+Here's an example of my output for this step:
 
 |<img src="./output_images/sobel_origin.jpg" width="280"/> <img src="./output_images/sobel_abs_x.jpg" width="280"/> <img src="./output_images/sobel_abs_y.jpg" width="280"/> 
 |:--:|
 |*Original image____________________Abs_Sobel_X______________________Abs_Sobel_Y*|
 
 
+**Magnitude and Direction of the Gradient**
+The magnitude, direction, or absolute value, of the gradient is just the square root of the squares of the individual x and y gradients. For a gradient in both the xx and yy directions, the magnitude is the square root of the sum of the squares.
 
-<!-- 
-
-Calculate the derivative in the yy direction (the 0, 1 at the end denotes yy direction):
+It's important to note here that the kernel size should be an odd number.
+For the direction sobel:
+```python
+    # Take the gradient in x and y separately
+    sobelx = cv2.Sobel(gray_img, cv2.CV_64F, 1, 0, ksize=sobel_kernel)
+    sobely = cv2.Sobel(gray_img, cv2.CV_64F, 0, 1, ksize=sobel_kernel)
+    # Calculate the magnitude 
+    gradmag = np.sqrt(sobelx**2 + sobely**2)
+    # Scale to 8-bit (0 - 255) and convert to type = np.uint8
+    scale_factor = np.max(gradmag)/255 
+    gradmag = (gradmag/scale_factor).astype(np.uint8) 
+    # Create a binary mask where mag thresholds are met
+    binary_output = np.zeros_like(gradmag)
+    binary_output[(gradmag >= thresh_min) & (gradmag <= thresh_max)] = 1
+```
+For the magnitude sobel:
 
 ```python
-sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
-binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
+Use np.arctan2(abs_sobely, abs_sobelx) to calculate the direction of the gradient
+    absgraddir = np.arctan2(np.absolute(sobely), np.absolute(sobelx))
 ```
+
 Here's an example of my output for this step.
 
-|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_abs_y.jpg" width="400"/> 
-|:--:| 
-|*Original image  _________________________ Abs_Sobel_Y*|
+|<img src="./output_images/sobel_origin.jpg" width="280"/> <img src="./output_images/sobel_mag.jpg" width="280"/> <img src="./output_images/sobel_dir.jpg" width="280"/> 
+|:--:|
+|*Original image____________________Magnitude Sobel______________________Direction Sobel*|
 
- -->
+
+
 <!-- ![alt text][image3] -->
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
