@@ -24,7 +24,7 @@
     </tr>
 </table> -->
 
-<img src=[image1] width="225"/> <img src=[image1] width="125"/> 
+<img src= ![alt text][image1] width="225"/> <img src= ![alt text][image2] width="125"/> 
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
 
