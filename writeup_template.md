@@ -228,29 +228,46 @@ def get_y_w_hls_images(img):
 
 #### Applying Sobel Thresholding
 ----
-**Calculate the absolute threshold value**
+**Calculate the absolute threshold value for x and y**
 
-Calculate the derivative in the xx direction (the 1, 0 at the end denotes xx direction):
+Calculate the derivative in the xx and yy direction (the 1, 0 at the end denotes xx direction) and (the 0, 1 at the end denotes yy direction):
 ```python
-sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0)
+# Apply x or y gradient with the OpenCV Sobel() function
+    # and take the absolute value
+    if orient == 'x':
+        abs_sobel = np.absolute(cv2.Sobel(gray_img, cv2.CV_64F, 1, 0, ksize = sobel_kernel))
+    if orient == 'y':
+        abs_sobel = np.absolute(cv2.Sobel(gray_img, cv2.CV_64F, 0, 1, ksize = sobel_kernel))
+# Rescale back to 8 bit integer
+    scaled_sobel = np.uint8(255*abs_sobel/np.max(abs_sobel))
+    # Create a copy and apply the threshold
+    binary_output = np.zeros_like(scaled_sobel)
+    # Here I'm using inclusive (>=, <=) thresholds, but exclusive is ok too
+binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 ```
-|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_abs_x.jpg" width="400"/> 
-|:--:| 
-|*Original image  _________________________Abs_Sobel_X*|
+Here's an example of my output for this step.
+
+|<img src="./output_images/sobel_origin.jpg" width="250"/> <img src="./output_images/sobel_abs_x.jpg" width="250"/> <img src="./output_images/sobel_abs_y.jpg" width="250"/> 
+|:--:|
+|*Original image____________________Abs_Sobel_X______________________Abs_Sobel_Y*|
 
 
 
+<!-- 
 
 Calculate the derivative in the yy direction (the 0, 1 at the end denotes yy direction):
 
 ```python
 sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
+binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 ```
+Here's an example of my output for this step.
+
 |<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_abs_y.jpg" width="400"/> 
 |:--:| 
 |*Original image  _________________________ Abs_Sobel_Y*|
 
-
+ -->
 <!-- ![alt text][image3] -->
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
