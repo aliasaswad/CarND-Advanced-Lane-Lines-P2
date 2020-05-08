@@ -247,7 +247,7 @@ binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 ```
 Here's an example of my output for this step.
 
-|<img src="./output_images/sobel_origin.jpg" width="250"/> <img src="./output_images/sobel_abs_x.jpg" width="250"/> <img src="./output_images/sobel_abs_y.jpg" width="250"/> 
+|<img src="./output_images/sobel_origin.jpg" width="280"/> <img src="./output_images/sobel_abs_x.jpg" width="280"/> <img src="./output_images/sobel_abs_y.jpg" width="280"/> 
 |:--:|
 |*Original image____________________Abs_Sobel_X______________________Abs_Sobel_Y*|
 
