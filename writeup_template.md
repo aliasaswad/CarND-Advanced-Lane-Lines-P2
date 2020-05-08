@@ -299,6 +299,19 @@ def combin_sobel(abs_sobel_x, abs_sobel_y, mag_sobel, dir_sobel):
 |:--:| 
 |*Original image_________________________ Combined Sobel*|
 
+#### Color and Gradient Thresholding
+
+Now it's time to combine what you know about color and gradient thresholding to get the best of both worlds.
+
+```python
+# Stack each channel to view their individual contributions in green and blue respectively
+# This returns a stack of the two binary images, whose components you can see as different colors
+color_binary = np.dstack((np.zeros_like(comb_sobel), comb_sobel, undistorted_y_w_hls)) * 255
+color_binary = color_binary.astype(np.uint8)
+```
+|<img src="./output_images/sobel_origin.jpg" width="280"/> <img src="./output_images/color_grad_combin.jpg" width="280"/> <img src="./output_images/sobel_combin.jpg" width="280"/> 
+|:--:|
+|*Original image____________________Stacked thresholds___________________Combined S-channel and gradient thresh.*|
 
 
 
