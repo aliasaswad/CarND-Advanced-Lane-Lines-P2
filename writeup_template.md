@@ -343,7 +343,23 @@ And here's the example:
 |:--:|
 |*Original image____________________Pres. trans. for curve___________________Pres. trans. for straight line*|
 
+Then we will apply the conbined thresholds with prespective transfor on the images as below:
 
+```python
+def combine_allthresh_and_transform(img):
+    pers_img = get_perspective_transform(img, src, dst)
+    binary_img = get_all_thresh_binary_image(pers_img)
+    return binary_img
+```
+|<img src="./output_images/all_thresh_org.jpg" width="280"/> <img src="./output_images/all_thresh_binary.jpg" width="280"/> <img src="./output_images/all_thresh_binary_pers_trans.jpg" width="280"/> 
+|:--:|
+|*Original image____________________All Thresh___________________All Thresh and Pres. Trans*|
+
+
+
+
+
+output_images/all_thresh_org.jpg
 
 
 
