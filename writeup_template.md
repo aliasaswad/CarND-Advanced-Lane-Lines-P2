@@ -286,6 +286,25 @@ Here's an example of my output for this step.
 |:--:|
 |*Original image____________________Magnitude Sobel______________________Direction Sobel*|
 
+#### Direction sobel outout is extremely noisy. So, we need to combin sobels as below
+
+```pyhton
+def combin_sobel(abs_sobel_x, abs_sobel_y, mag_sobel, dir_sobel):
+    combin = np.zeros_like(dir_sobel)
+    # Sobel X returned the best output so we keep all of its results. We perform a binary and on all the other sobels    
+    combin[(abs_sobel_x == 1) | ((abs_sobel_y == 1) & (mag_sobel == 1) & (dir_sobel == 1))] = 1
+    return combin
+```
+|<img src="./output_images/sobel_origin.jpg" width="400"/> <img src="./output_images/sobel_combin.jpg
+" width="400"/> 
+|:--:| 
+|*Original image_________________________ Combined Sobel*|
+
+
+
+
+
+
 
 
 <!-- ![alt text][image3] -->
