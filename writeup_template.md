@@ -1,3 +1,14 @@
+[//]: # (Image References)
+
+[image1]: ./examples/undistort_output.png "Undistorted"
+[image2]: ./test_images/test1.jpg "Road Transformed"
+[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image6]: ./examples/example_output.jpg "Output"
+[video1]: ./project_video.mp4 "Video"
+
+
 
 ### **Advanced Lane Finding Project**
 ---
@@ -15,16 +26,6 @@ The goals / steps of this project is to build a Lane Finding Pipeline as the fol
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
-[//]: # (Image References)
-
-[image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
-
 
 ---
 
@@ -36,24 +37,19 @@ The goals / steps of this project is to build a Lane Finding Pipeline as the fol
 # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
 objp = np.zeros((6*8,3), np.float32)
 objp[:,:2] = np.mgrid[0:8, 0:6].T.reshape(-1,2) #that will shape coordinate back to two colomns x and y
-
 # Arrays to store object points and image points from all the images.
 objpoints = [] # 3d points in real world space
 imgpoints = [] # 2d points in image plane.
-
 # Step through the list and search for chessboard corners
 for idx, fname in enumerate(images): #idx start from 0 to len(images)
     img = cv2.imread(fname)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
     # Find the chessboard corners
     ret, corners = cv2.findChessboardCorners(gray, (8,6), None)
-
     # If found, add object points, image points
     if ret == True:
         objpoints.append(objp)
         imgpoints.append(corners)
-
         # Draw and display the corners
         cv2.drawChessboardCorners(img, (8,6), corners, ret)
 ```
@@ -69,6 +65,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
+
 ![alt text][image2]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
