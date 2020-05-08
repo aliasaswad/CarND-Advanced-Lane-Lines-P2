@@ -152,13 +152,17 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 
-<img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/undist_2.jpg" width="300"/> 
+|<img src="./output_images/calibr_1.jpg" width="400"/> <img src="./output_images/undist_2.jpg" width="400"/> 
+|:--:| 
+|*Original test image  _________________________    Undistoted test image*|
 
 <!-- ![alt text][image2] -->
 
 So, when we apply the distortion correction on out test images the result will be as below:
 
-<img src="./output_images/undist_test_2.jpg" width="450"/> <img src="./output_images/undist_test_1.jpg" width="450"/> 
+|<img src="./output_images/undist_test_2.jpg" width="450"/> <img src="./output_images/undist_test_1.jpg" width="450"/> 
+|:--:| 
+|*Original image  _________________________    Undistoted image*|
 
 
 
