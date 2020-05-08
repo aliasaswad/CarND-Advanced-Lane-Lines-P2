@@ -10,7 +10,7 @@
 
 <!-- 
 
-output_images/undist_2.jpg
+
 output_images/undist_test_1.jpg
 output_images/undist_test_2.jpg
 output_images/rbg_test_1.jpg
@@ -89,6 +89,7 @@ output_images/det_curv_lane_draw_laneline.jpg
 # **Advanced Lane Finding Project**
 
 <img src="./output_images/project_video_frame_out_45.0.jpg" width="600"/>
+
 ---
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
@@ -107,7 +108,7 @@ The goals / steps of this project is to build a Lane Finding Pipeline as the fol
 
 ### Camera Calibration
 
-#### 1. The below description is how you computed the camera matrix and distortion coefficients with an example of a distortion corrected calibration image.
+#### 1. The below description is how I computed the camera matrix and distortion coefficients with an example of a distortion corrected calibration image.
 
 ```python
 # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
@@ -141,11 +142,13 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ### Pipeline (single images)
 
-#### 1. Provide an example of a distortion-corrected image.
+#### 1. Distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 
-![alt text][image2]
+<img src="./output_images/calibr_1.jpg" width="300"/> <img src="./output_images/undist_2.jpg" width="300"/> 
+
+<!-- ![alt text][image2] -->
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
