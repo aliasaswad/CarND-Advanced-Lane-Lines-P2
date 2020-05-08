@@ -13,9 +13,16 @@
 
 # **Advanced Lane Finding Project**
 ---
-
-
-display(HTML("<table><tr><td><img src='./examples/undistort_output.png'></td><td><img src='./test_images/test1.jpg'></td></tr></table>"))
+<table>
+    <tr>
+        <td>
+            <img src='./examples/undistort_output.png'>
+        </td>
+        <td>
+            <img src='./test_images/test1.jpg'>
+        </td>
+    </tr>
+</table>
 
 The goals / steps of this project is to build a Lane Finding Pipeline as the following:
 
